@@ -5,7 +5,7 @@ class Scraper
   JPY_TO_USD = 0.0091
 
   def self.search_items(keyword)
-    html = parse_html "https://www.mercari.com/jp/search/?sort_order=created_desc&keyword=#{keyword}"
+    html = parse_html "https://www.mercari.com/jp/search/?sort_order=created_desc&keyword=#ゲームウォッチ"
     elements = html.css '.items-box-content > .items-box'
 
     elements.map do |el|
@@ -29,7 +29,7 @@ class Scraper
   end
 
   def self.category_items(cat_id)
-    html = parse_html "https://www.mercari.com/jp/category/#{cat_id}/"
+    html = parse_html "https://www.mercari.com/jp/category/#703/"
     elements = html.css "[data-test='grid-layout'] > ul > li"
     elements.map do |el|
       href = el.css('a').attr('href').value
